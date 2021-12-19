@@ -1,0 +1,32 @@
+<p></p>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Liste des Categories </div>
+    <li>
+      <button (click)="onNewCategorie()" class="btn btn-sm btn-outline-info">Ajout</button>
+    </li>
+    <div class="panel-body" *ngIf="categories">
+    <form #f="ngForm" (ngSubmit)="onSearch(f.value)">
+      <div class="form-group">
+        <label>Key word:</label>
+        <input type="text" name="keyword" ngModel [(ngModel)]="keyword">
+        <button type="submit">
+          <span class="glyphicon glyphicon-search"></span>
+        </button>
+      </div>
+    </form>
+    
+      <table class="table">
+        <tr>
+          <th>nom</th><th>sousCategorie</th><th>fichiers</th>
+        </tr>
+        <tr *ngFor="let categorie of categories.docs">
+          <td>{{categorie.nom}}</td>
+          <td>{{categorie.SousCategories}}</td>
+          <td>{{categorie.fichiers}}</td>
+        
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

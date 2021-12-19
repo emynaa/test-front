@@ -1,0 +1,33 @@
+<p></p>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Liste des Fichiers </div>
+    <li>
+      <button (click)="onNewFichier()" class="btn btn-sm btn-outline-info ">Ajout</button>
+    </li>
+    <div class="panel-body" *ngIf="fichiers">
+      <form #f="ngForm" (ngSubmit)="onSearch(f.value)">
+        <div class="form-group">
+          <label>Key word:</label>
+          <input type="text" name="keyword" ngModel [(ngModel)]="keyword">
+          <button type="submit">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </div>
+      </form>
+      <table class="table">
+        <tr>
+          <th>nom</th><th>taille</th><th>lien</th><th>categorie</th><th>sousCategorie</th>
+        </tr>
+        <tr *ngFor="let fichier of fichiers.docs">
+          <td>{{fichier.nom}}</td>
+          <td>{{fichier.taille}}</td>
+          <td>{{fichier.lien}}</td>
+          <td>{{fichier.categorie}}</td>
+          <td>{{fichier.sousCategorie}}</td>
+        
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
